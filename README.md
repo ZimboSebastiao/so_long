@@ -20,6 +20,7 @@
 
 <!-- Estatísticas adicionais -->
 <div align="center">
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/ZimboSebastiao/so_long?style=flat-square&color=0056D2)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ZimboSebastiao/so_long?style=flat-square&color=32CD32)
 ![GitHub issues](https://img.shields.io/github/issues/ZimboSebastiao/so_long?style=flat-square&color=orange)
@@ -62,7 +63,7 @@ So Long é um projeto da 42 São Paulo que consiste em desenvolver um jogo 2D us
 
 Se este projeto foi útil para você, considere dar uma estrela ⭐
 
-[![GitHub stars](https://img.shields.io/github/stars/ZimboSebastiao/so_long?style=social)](https://github.com/ZimboSebastiao/so_long)
+[![GitHub stars](https://img.shields.io/github/stars/username/so-long?style=social)](https://github.com/username/so-long)
 
 ### 📄 Licença
 
