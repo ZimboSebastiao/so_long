@@ -2,12 +2,6 @@
 
 <div align="center">
 
-<!-- Banner com gradiente -->
-<div align="center">
-  <img src="https://via.placeholder.com/800x200/0056D2/FFFFFF?text=So+Long+Project" alt="So Long Banner" width="100%">
-</div>
-
-<!-- Badges organizadas -->
 <div align="center">
 
 ![So Long](https://img.shields.io/badge/42-São_Paulo-0056D2?style=for-the-badge&logo=42&logoColor=white)
@@ -18,7 +12,6 @@
 
 </div>
 
-<!-- Estatísticas adicionais -->
 <div align="center">
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/ZimboSebastiao/so_long?style=flat-square&color=0056D2)
@@ -29,7 +22,7 @@
 
 </div>
 
-<!-- Conteúdo do projeto aqui -->
+<!-- Conteúdo-->
 <br>
 
 <div align="center">
