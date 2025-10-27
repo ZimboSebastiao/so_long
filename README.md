@@ -55,15 +55,15 @@ So Long é um projeto da 42 São Paulo que consiste em desenvolver um jogo 2D us
 
 ### 📞 Contato
 
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:seu-email@example.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/seu-perfil)
-[![42](https://img.shields.io/badge/42_Intra-000000?style=for-the-badge&logo=42&logoColor=white)](https://profile.intra.42.fr/users/seu-usuario)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:gloriasebastiao7@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/zimbo-sebasti%C3%A3o-3397a1195/)
+
 
 ### 🌟 Dê uma estrela!
 
 Se este projeto foi útil para você, considere dar uma estrela ⭐
 
-[![GitHub stars](https://img.shields.io/github/stars/username/so-long?style=social)](https://github.com/username/so-long)
+[![GitHub stars](https://img.shields.io/github/stars/username/so-long?style=social)](https://github.com/ZimboSebastiao/so_long)
 
 ### 📄 Licença
 
