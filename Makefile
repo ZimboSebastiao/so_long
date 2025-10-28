@@ -32,16 +32,19 @@ export LOGO
 
 # Compilador e flags
 CC          := cc
-CFLAGS      := -Wall -Wextra -Werror
+CFLAGS      := -Wall -Wextra -Werror -Iinclude -Ilibft1
 
 # Diretórios
 SRC_DIR     := src
 OBJ_DIR     := obj
+INC_DIR     := include
 MLX_DIR     := mlx_linux
+LIBFT_DIR   := libft1
+LIBFT       := $(LIBFT_DIR)/libft.a
 NAME        := so_long
 
 # Arquivos fonte
-SRC_FILES   := main.c
+SRC_FILES   := main.c utils/utils.c player.c
 
 SRCS        := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -56,10 +59,10 @@ RESET       := \033[0m
 all: $(MLX_DIR)/libmlx_Linux.a $(NAME)
 
 # Regra principal
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
 	@echo "$$LOGO"
 	@echo "$(BLUE)🔧 Linking $(NAME)...$(RESET)"
-	@$(CC) $(OBJS) -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -o $(NAME)
+	@$(CC) $(OBJS) -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "$(GREEN)✅ Build complete: $(NAME)$(RESET)"
 
 # Compilação dos .o
@@ -77,14 +80,19 @@ $(MLX_DIR)/libmlx_Linux.a:
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
+$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR)
+
 clean:
 	@echo "$(RED)🧹 Removing object files...$(RESET)"
 	@rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(MLX_DIR) clean 2>/dev/null || true
 
 fclean: clean
 	@echo "$(RED)🗑️  Removing executables...$(RESET)"
 	@rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
