@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 13:31:19 by zalberti          #+#    #+#             */
-/*   Updated: 2025/10/29 15:17:28 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/10/29 15:33:53 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include "libft.h"
 # include "mlx.h"
 # define PLAYER_PATH "./assets/sprites/player_walk_1.xpm"
+# define PLAYER_WALK_2 "./assets/sprites/player_walk_2.xpm"
+# define PLAYER_WALK_3 "./assets/sprites/player_walk_3.xpm"
+# define PLAYER_WALK_4 "./assets/sprites/player_walk_4.xpm"
+# define PLAYER_WALK_5 "./assets/sprites/player_walk_5.xpm"
+# define PLAYER_WALK_6 "./assets/sprites/player_walk_6.xpm"
+# define PLAYER_WALK_7 "./assets/sprites/player_walk_7.xpm"
+# define ANIMATION_FRAMES 7
+# define ANIMATION_SPEED 5
 
 typedef struct s_data
 {
@@ -34,7 +42,11 @@ typedef struct s_point
 
 typedef struct s_player
 {
-	void	*sprite;
+	void	**sprite;
+	int		current_frame;
+	int		frame_count;
+	int		is_moving;
+	int		direction;
 	int		x;
 	int		y;
 	int		width;
@@ -52,5 +64,7 @@ void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	ft_render_player(t_game *game);
 void	ft_init_player(t_game *game);
 void	ft_init_game(t_game *game);
+void	ft_update_animation(t_game *game);
+void	ft_cleanup_player(t_game *game);
 
 #endif
