@@ -44,7 +44,7 @@ LIBFT       := $(LIBFT_DIR)/libft.a
 NAME        := so_long
 
 # Arquivos fonte
-SRC_FILES   := main.c utils/utils.c player.c
+SRC_FILES   := main.c utils/utils.c player.c events/events.c
 
 SRCS        := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

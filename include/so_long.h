@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 13:31:19 by zalberti          #+#    #+#             */
-/*   Updated: 2025/10/29 15:33:53 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/10/29 16:21:41 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include "libft.h"
 # include "mlx.h"
-# define PLAYER_PATH "./assets/sprites/player_walk_1.xpm"
+# define PLAYER_WALK_1 "./assets/sprites/player_walk_1.xpm"
 # define PLAYER_WALK_2 "./assets/sprites/player_walk_2.xpm"
 # define PLAYER_WALK_3 "./assets/sprites/player_walk_3.xpm"
 # define PLAYER_WALK_4 "./assets/sprites/player_walk_4.xpm"
@@ -42,7 +42,7 @@ typedef struct s_point
 
 typedef struct s_player
 {
-	void	**sprite;
+	void	**sprites;
 	int		current_frame;
 	int		frame_count;
 	int		is_moving;
@@ -61,10 +61,14 @@ typedef	struct s_game
 }	t_game;
 
 void	ft_mlx_pixel_put(t_data *data, int x, int y, int color);
+int	ft_key_release(int keycode, t_game *game);
+int	ft_key_press(int keycode, t_game *game);
 void	ft_render_player(t_game *game);
 void	ft_init_player(t_game *game);
 void	ft_init_game(t_game *game);
 void	ft_update_animation(t_game *game);
 void	ft_cleanup_player(t_game *game);
+int	ft_game_loop(t_game *game);
+int	ft_close_game(t_game *game);
 
 #endif
