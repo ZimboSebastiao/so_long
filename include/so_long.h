@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 13:31:19 by zalberti          #+#    #+#             */
-/*   Updated: 2025/10/28 18:33:36 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/10/29 15:17:28 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include "libft.h"
 # include "mlx.h"
-# define PLAYER_PATH "./assets/sprites/player.xpm"
+# define PLAYER_PATH "./assets/sprites/player_walk_1.xpm"
 
 typedef struct s_data
 {
