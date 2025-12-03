@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 05:42:54 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/03 11:38:08 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 12:29:34 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ int	ft_trap_anim(t_data *game)
 void	ft_free_traps(t_data *game)
 {
 	if (game->t_pos.y)
-        free(game->t_pos.y);
-    if (game->t_pos.x)
-        free(game->t_pos.x);
-    game->t_pos.y = NULL;
-    game->t_pos.x = NULL;
+		free(game->t_pos.y);
+	if (game->t_pos.x)
+		free(game->t_pos.x);
+	game->t_pos.y = NULL;
+	game->t_pos.x = NULL;
 }

@@ -30,7 +30,7 @@
 ## 🎮 Sobre o Projeto
 
 So Long é um projeto da 42 São Paulo que consiste em desenvolver um jogo 2D usando a MiniLibX.
-
+valgrind ./so_long maps/map.ber
 </div>
 
 <br>
