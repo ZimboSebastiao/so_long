@@ -8,12 +8,12 @@ NAME =	so_long
 LIBFT =	libft1/libft.a
 SRCS =	main.c \
 		src/events/ft_handle_event.c \
-		src/events/ft_handle_images.c \
+		src/events/ft_texture_loader.c \
 		src/events/ft_handle_trap.c \
-		src/events/ft_handle_map.c \
+		src/events/ft_map_manager.c \
 		src/events/get_next_line.c \
-		src/render/ft_draw_map.c \
-		src/utils/ft_player_moves.c \
+		src/render/ft_render_map.c \
+		src/utils/ft_player_controller.c \
 		src/utils/ft_trap_moves.c \
 		src/utils/get_next_line_utils.c \
 		src/validator/ft_check_error.c \

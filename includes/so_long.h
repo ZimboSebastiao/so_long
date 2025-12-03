@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 14:13:52 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/01 05:13:51 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:30:01 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ typedef struct s_data
 }	t_data;
 
 //functions for checking input errors
-int		ft_check_rectangle(t_data *game);
-int		ft_middle_walls(t_data *game, int y);
-int		ft_first_last_walls(t_data *game, int y, int x);
-int		ft_check_walls(t_data *game);
+int		ft_validate_map_rectangle(t_data *game);
+int		ft_validate_inner_walls(t_data *game, int y);
+int		ft_validate_border_walls(t_data *game, int y, int x);
+int		ft_validate_all_walls(t_data *game);
 int		ft_check_error(t_data *game, char *file);
 int		ft_check_requirements(t_data *game);
 int		ft_check_extention(const char *file);

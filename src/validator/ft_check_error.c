@@ -6,13 +6,13 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 19:37:02 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/01 05:17:47 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:30:01 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_check_rectangle(t_data *game)
+int	ft_validate_map_rectangle(t_data *game)
 {
 	int	y;
 
@@ -29,7 +29,7 @@ int	ft_check_rectangle(t_data *game)
 	return (0);
 }
 
-int	ft_middle_walls(t_data *game, int y)
+int	ft_validate_inner_walls(t_data *game, int y)
 {
 	if (game->map.map[y][0] != '1')
 	{
@@ -44,7 +44,7 @@ int	ft_middle_walls(t_data *game, int y)
 	return (0);
 }
 
-int	ft_first_last_walls(t_data *game, int y, int x)
+int	ft_validate_border_walls(t_data *game, int y, int x)
 {
 	while (game->map.map[y][x])
 	{
@@ -58,7 +58,7 @@ int	ft_first_last_walls(t_data *game, int y, int x)
 	return (0);
 }
 
-int	ft_check_walls(t_data *game)
+int	ft_validate_all_walls(t_data *game)
 {
 	int	x;
 	int	y;
@@ -69,12 +69,12 @@ int	ft_check_walls(t_data *game)
 	{
 		if (y == 0 || y == (game->map.height - 1))
 		{
-			if (ft_first_last_walls(game, y, x) < 0)
+			if (ft_validate_border_walls(game, y, x) < 0)
 				return (-1);
 		}
 		else
 		{
-			if (ft_middle_walls(game, y) < 0)
+			if (ft_validate_inner_walls(game, y) < 0)
 				return (-1);
 		}
 		x = 0;
@@ -91,7 +91,7 @@ int	ft_check_error(t_data *game, char *file)
 	ft_count_map_rows(game, file);
 	if (ft_set_map_layout(game, file) < 0)
 		return (-1);
-	if (ft_check_rectangle(game) < 0 || ft_check_walls(game) < 0)
+	if (ft_validate_map_rectangle(game) < 0 || ft_validate_all_walls(game) < 0)
 	{
 		ft_free_map(game);
 		return (-1);
