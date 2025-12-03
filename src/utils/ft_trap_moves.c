@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 20:28:28 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/01 05:25:06 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 12:23:53 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_move_trap(t_data *game)
 		return (0);
 	}
 	i = 0;
-	while (game->t_pos.y[i])
+	while (i < game->map.trap)
 	{
 		ft_move_trap_up(game, i);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 14:13:52 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/03 11:33:59 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:50:56 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ typedef struct s_image
 	void	*wall;
 	void	*trap;
 	void	*exit;
-	void	*idle_frames_right[6];
-	void	*idle_frames_left[6];
-	int		idle_frame_index;
-	int		is_idle_animating;
 }	t_image;
 
 typedef struct s_data

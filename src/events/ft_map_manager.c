@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 20:28:02 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/03 11:19:23 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 11:41:56 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ void	ft_count_map_rows(t_data *game, char *file)
 	{
 		line = get_next_line(fd);
 		if (!line)
-		{
-			free(line);
 			break ;
-		}
 		rows++;
 		free(line);
 	}

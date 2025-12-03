@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_player_moves.c                                  :+:      :+:    :+:   */
+/*   ft_player_controller.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 20:28:15 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/01 05:21:05 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 12:12:44 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_move_up(t_data *game)
 			game->map.map[game->p_pos.y - 1][game->p_pos.x] = 'P';
 			game->map.map[game->p_pos.y][game->p_pos.x] = '0';
 			game->p_pos.y--;
-			ft_render(game);
 		}
 		else if (game->map.map[game->p_pos.y - 1][game->p_pos.x] == 'T')
 			ft_game_over(game);

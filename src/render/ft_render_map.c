@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 05:27:02 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/03 11:19:19 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/03 12:08:33 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_draw_map(t_data *game, int x, int y)
 		if (game->moves % 2 == 0)
 			mlx_put_image_to_window(game->mlx, game->win, game->img.player_0,
 				x * PIXEL, y * PIXEL);
-		else if (game->moves % 2 == 1)
+		else
 			mlx_put_image_to_window(game->mlx, game->win, game->img.player_1,
 				x * PIXEL, y * PIXEL);
 	}
@@ -68,7 +68,9 @@ int	ft_render(t_data *game)
 		x = 0;
 		y++;
 	}
-	mlx_string_put(game->mlx, game->win, 3, 12, 0x00000, show);
+	mlx_string_put(game->mlx, game->win, 9, 13, 0x000000, show);
+	mlx_string_put(game->mlx, game->win, 8, 12, 0xFFFFFF, show);
 	free(show);
 	return (0);
 }
+
