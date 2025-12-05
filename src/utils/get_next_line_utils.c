@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 21:14:01 by zimbo             #+#    #+#             */
-/*   Updated: 2025/11/27 21:14:35 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/05 19:06:19 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,18 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	if (!s1)
 	{
 		s1 = malloc(1);
+		if (!s1)
+			return (NULL);
 		s1[0] = '\0';
 	}
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s2)
+		return (s1);
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
-		return (0);
+	{
+		free(s1);
+		return (NULL);
+	}
 	i = -1;
 	j = 0;
 	while (s1[++i])

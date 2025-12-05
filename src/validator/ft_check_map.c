@@ -4,6 +4,8 @@ void	ft_init_map_layout(t_data *game)
 {
 	ft_memset(&game->map, 0, sizeof(t_map));
 	ft_memset(&game->p_pos, 0, sizeof(t_player));
+	ft_memset(&game->t_pos, 0, sizeof(t_trap));
+	ft_memset(&game->img, 0, sizeof(t_image));
 	game->moves = 0;
 	game->crystal = 0;
 	game->dir = 'r';
