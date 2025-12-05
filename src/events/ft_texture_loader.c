@@ -1,36 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_texture_loader.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 20:27:49 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/03 11:49:07 by zimbo            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 void	ft_change_player_c(t_data *game, int pixel, char dir)
 {
+	void	*new_player_0;
+	void	*new_player_1;
+	char	*path_0;
+	char	*path_1;
+
 	if (dir == 'r')
 	{
-		mlx_destroy_image(game->mlx, game->img.player_0);
-		game->img.player_0 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_right_0.xpm", &pixel, &pixel);
-		mlx_destroy_image(game->mlx, game->img.player_1);
-		game->img.player_1 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_right_1.xpm", &pixel, &pixel);
+		path_0 = "./sprites/swim_right_0.xpm";
+		path_1 = "./sprites/swim_right_1.xpm";
 	}
-	else if (dir == 'l')
+	else
 	{
-		mlx_destroy_image(game->mlx, game->img.player_0);
-		game->img.player_0 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_left_0.xpm", &pixel, &pixel);
-		mlx_destroy_image(game->mlx, game->img.player_1);
-		game->img.player_1 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_left_1.xpm", &pixel, &pixel);
+		path_0 = "./sprites/swim_left_0.xpm";
+		path_1 = "./sprites/swim_left_1.xpm";
+	}
+	
+	new_player_0 = mlx_xpm_file_to_image(game->mlx, path_0, &pixel, &pixel);
+	new_player_1 = mlx_xpm_file_to_image(game->mlx, path_1, &pixel, &pixel);
+	
+	if (new_player_0 && new_player_1)
+	{
+		if (game->img.player_0)
+			mlx_destroy_image(game->mlx, game->img.player_0);
+		if (game->img.player_1)
+			mlx_destroy_image(game->mlx, game->img.player_1);
+		game->img.player_0 = new_player_0;
+		game->img.player_1 = new_player_1;
 	}
 }
 
@@ -40,21 +38,25 @@ void	ft_change_player(t_data *game, int pixel, char dir)
 		ft_change_player_c(game, pixel, dir);
 	else if (dir == 'r')
 	{
-		mlx_destroy_image(game->mlx, game->img.player_0);
-		game->img.player_0 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_right_0.xpm", &pixel, &pixel);
-		mlx_destroy_image(game->mlx, game->img.player_1);
-		game->img.player_1 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_right_1.xpm", &pixel, &pixel);
+		ft_change_player_c(game, pixel, 'r');
 	}
 	else if (dir == 'l')
 	{
-		mlx_destroy_image(game->mlx, game->img.player_0);
-		game->img.player_0 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_left_0.xpm", &pixel, &pixel);
-		mlx_destroy_image(game->mlx, game->img.player_1);
-		game->img.player_1 = mlx_xpm_file_to_image(game->mlx,
-				"./sprites/swim_left_1.xpm", &pixel, &pixel);
+		ft_change_player_c(game, pixel, 'l');
+	}
+}
+
+void	ft_create_player(t_data *game, int pixel)
+{
+	game->img.player_0 = mlx_xpm_file_to_image(game->mlx,
+			"./sprites/fish_0.xpm", &pixel, &pixel);
+	game->img.player_1 = mlx_xpm_file_to_image(game->mlx,
+			"./sprites/fish_1.xpm", &pixel, &pixel);
+	
+	if (!game->img.player_0 || !game->img.player_1)
+	{
+		ft_putstr_fd("Error\nFailed to load player images\n", 2);
+		ft_exit_game(game, EXIT_FAILURE);
 	}
 }
 
@@ -63,6 +65,7 @@ void	ft_create_images(t_data *game)
 	int	pixel;
 
 	pixel = PIXEL;
+	
 	game->img.floor = mlx_xpm_file_to_image(game->mlx,
 			"./sprites/floor.xpm", &pixel, &pixel);
 	game->img.wall = mlx_xpm_file_to_image(game->mlx,
@@ -73,26 +76,21 @@ void	ft_create_images(t_data *game)
 			"./sprites/enime_0.xpm", &pixel, &pixel);
 	game->img.exit = mlx_xpm_file_to_image(game->mlx,
 			"./sprites/exit_close.xpm", &pixel, &pixel);
+	game->img.exit_open_img = mlx_xpm_file_to_image(game->mlx,
+			"./sprites/exit.xpm", &pixel, &pixel);
+	
+	if (!game->img.floor || !game->img.wall || !game->img.collectible ||
+		!game->img.trap || !game->img.exit || !game->img.exit_open_img)
+	{
+		ft_putstr_fd("Error\nFailed to load game images\n", 2);
+		ft_exit_game(game, EXIT_FAILURE);
+	}
+	
 	ft_create_player(game, pixel);
-}
-
-void	ft_create_player(t_data *game, int pixel)
-{
-	game->img.player_0 = mlx_xpm_file_to_image(game->mlx,
-			"./sprites/fish_0.xpm", &pixel, &pixel);
-	game->img.player_1 = mlx_xpm_file_to_image(game->mlx,
-			"./sprites/fish_1.xpm", &pixel, &pixel);
 }
 
 void	ft_clear_images(t_data *game)
 {
-	mlx_destroy_image(game->mlx, game->img.player_0);
-	mlx_destroy_image(game->mlx, game->img.player_1);
-	mlx_destroy_image(game->mlx, game->img.floor);
-	mlx_destroy_image(game->mlx, game->img.collectible);
-	mlx_destroy_image(game->mlx, game->img.trap);
-	mlx_destroy_image(game->mlx, game->img.wall);
-	mlx_destroy_image(game->mlx, game->img.exit);
-	free(game->t_pos.y);
-	free(game->t_pos.x);
+	ft_destroy_all_images(game);
+	ft_free_traps(game);
 }

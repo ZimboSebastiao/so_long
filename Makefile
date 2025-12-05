@@ -11,6 +11,7 @@ SRCS =	main.c \
 		src/events/ft_texture_loader.c \
 		src/events/ft_handle_trap.c \
 		src/events/ft_map_manager.c \
+		src/events/ft_game_manager.c \
 		src/events/get_next_line.c \
 		src/render/ft_render_map.c \
 		src/utils/ft_player_controller.c \

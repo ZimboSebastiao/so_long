@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 20:28:39 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/01 05:45:37 by zimbo            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 int	main(int argc, char **argv)
@@ -18,25 +6,39 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error\nInvalid number of arguments.\n", 2);
-		return (0);
+		ft_putstr_fd("Error\nUsage: ./so_long <map.ber>\n", 2);
+		return (EXIT_FAILURE);
 	}
+	ft_memset(&game, 0, sizeof(t_data));
 	if (ft_check_error(&game, argv[1]) < 0)
-		return (0);
+		return (EXIT_FAILURE);
 	game.mlx = mlx_init();
-	if (game.mlx == NULL)
+	if (!game.mlx)
 	{
-		ft_putstr_fd("Error\nMissing graphical interface.\n", 2);
+		ft_putstr_fd("Error\nFailed to initialize MLX\n", 2);
 		ft_free_map(&game);
-		ft_free_traps(&game);
-		return (0);
+		return (EXIT_FAILURE);
 	}
 	game.win = mlx_new_window(game.mlx, game.map.width * PIXEL,
-			game.map.height * PIXEL, "So Long!");
+			game.map.height * PIXEL, "so_long");
+	if (!game.win)
+	{
+		ft_putstr_fd("Error\nFailed to create window\n", 2);
+		mlx_destroy_display(game.mlx);
+		free(game.mlx);
+		ft_free_map(&game);
+		return (EXIT_FAILURE);
+	}
 	ft_create_images(&game);
+	if (game.map.trap > 0 && ft_init_traps(&game) < 0)
+	{
+		ft_putstr_fd("Error\nFailed to initialize traps\n", 2);
+		ft_exit_game(&game, EXIT_FAILURE);
+	}
 	mlx_loop_hook(game.mlx, &ft_trap_anim, &game);
-	mlx_expose_hook(game.win, &ft_render, &game);
-	mlx_key_hook(game.win, ft_key_press, &game);
+	mlx_hook(game.win, 2, 1L << 0, ft_key_press, &game);
 	mlx_hook(game.win, 17, 0, ft_press_x, &game);
+	ft_render(&game);
 	mlx_loop(game.mlx);
+	return (EXIT_SUCCESS);
 }

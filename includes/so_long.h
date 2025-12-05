@@ -1,19 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/27 14:13:52 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/03 11:50:56 by zimbo            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
 # include "../libft1/libft.h"
+# include "ft_printf/ft_printf.h"
 # include "../mlx_linux/mlx.h"
 # include <fcntl.h>
 # include "get_next_line.h"
@@ -21,11 +10,16 @@
 # define PIXEL	48
 # define ESC	65307
 
-// for moving with the keyboard arrows:
 # define UP		0xff52
 # define DOWN	0xff54
 # define LEFT	0xff51
 # define RIGHT	0xff53
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
 typedef struct s_trap
 {
@@ -42,6 +36,7 @@ typedef struct s_map
 	int		collectible;
 	int		trap;
 	int		exit;
+	int		exit_open;
 }	t_map;
 
 typedef struct s_player
@@ -59,6 +54,7 @@ typedef struct s_image
 	void	*wall;
 	void	*trap;
 	void	*exit;
+	void	*exit_open_img;
 }	t_image;
 
 typedef struct s_data
@@ -72,26 +68,23 @@ typedef struct s_data
 	int			moves;
 	int			crystal;
 	char		dir;
+	int			game_over;
 }	t_data;
 
 // errors
 int		ft_validate_map_rectangle(t_data *game);
-int		ft_validate_inner_walls(t_data *game, int y);
-int		ft_validate_border_walls(t_data *game, int y, int x);
-int		ft_validate_all_walls(t_data *game);
+int		ft_validate_walls(t_data *game);
 int		ft_check_error(t_data *game, char *file);
 int		ft_check_requirements(t_data *game);
 int		ft_check_extention(const char *file);
 
 // layout inicialization
-int		ft_init_positions(t_data *game, int i, int j);
+int		ft_init_positions(t_data *game);
 int		ft_set_map_layout(t_data *game, char *file);
 void	ft_init_map_layout(t_data *game);
-void	ft_count_map_rows(t_data *game, char *file);
-void	ft_set_stats(t_data *game, char *tmp);
-void	ft_get_map_width(t_data *game, char *tmp);
-void	ft_write_map(t_data *game, char *tmp);
+int		ft_count_map_rows(t_data *game, char *file);
 void	ft_free_map(t_data *game);
+void	ft_free_matrix(char **matrix);
 
 // player
 void	ft_move_up(t_data *game);
@@ -115,16 +108,18 @@ void	ft_free_traps(t_data *game);
 int		ft_render(t_data *game);
 void	ft_create_player(t_data *game, int pixel);
 void	ft_draw_map(t_data *game, int x, int y);
-void	ft_open_exit(t_data *game, int pixel);
+void	ft_open_exit(t_data *game);
 void	ft_change_player_c(t_data *game, int pixel, char dir);
 void	ft_change_player(t_data *game, int pixel, char dir);
 void	ft_create_images(t_data *game);
 void	ft_clear_images(t_data *game);
+void	ft_destroy_all_images(t_data *game);
 
 // events
 int		ft_press_x(t_data *game);
 int		ft_key_press(int key, t_data *game);
 void	ft_game_over(t_data *game);
 void	ft_check_winner(t_data *game);
+void	ft_exit_game(t_data *game, int exit_code);
 
 #endif
