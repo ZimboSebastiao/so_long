@@ -1,6 +1,5 @@
 # So Long 
 
-<div align="center">
 
 <div align="center">
 
@@ -20,23 +19,108 @@
 
 </div>
 
-</div>
-
-<!-- Conteúdo-->
-<br>
-
-<div align="center">
-
 ## 🎮 Sobre o Projeto
 
-So Long é um projeto da 42 São Paulo que consiste em desenvolver um jogo 2D usando a MiniLibX.
-valgrind ./so_long maps/map.ber
+So Long é um projeto da 42 São Paulo que consiste em desenvolver um jogo 2D usando a MiniLibX. Neste jogo, você controla um peixe que deve coletar todos os cristais de gelo para abrir a saída e escapar, enquanto evita inimigos mortais que patrulham o cenário.
+
+
+<br>
+
+## 🎥 Demonstração
+
+📹 **Vídeo de Demonstração**: [demo](./video/demo.webm)
+
+*Demonstração do jogo funcionando com todas as mecânicas*
+
+<br>
+
+
+
+## 🚀 Funcionalidades
+
+- ✅ **Mapa Validado**: Sistema de validação rigoroso para arquivos `.ber`
+- ✅ **Movimentação Suave**: Controles responsivos com animação do personagem
+- ✅ **Sistema de Coletáveis**: Colete todos os cristais para abrir a saída
+- ✅ **Inimigos Inteligentes**: Armadilhas que se movem automaticamente
+- ✅ **Múltiplas Sprites**: Animação de personagem e armadilhas
+- ✅ **Contador de Movimentos**: Exibe o número de movimentos na tela
+- ✅ **Sistema de Vitória/Derrota**: Mensagens claras e encerramento adequado
+
+## 🎯 Regras do Jogo
+
+### Elementos do Mapa:
+- **`0`** - Espaço vazio (chão)
+- **`1`** - Parede
+- **`P`** - Jogador (peixe)
+- **`C`** - Cristal coletável
+- **`E`** - Saída
+- **`T`** - Armadilha/inimigo
+
+### Objetivo:
+1. Coletar **todos os cristais (C)** do mapa
+2. A saída (**E**) se abre automaticamente quando todos os cristais são coletados
+3. Chegar à saída para vencer o jogo
+4. Evitar contato com as armadilhas (**T**) que se movem automaticamente
+
+### Controles:
+- **W** ou **↑** - Mover para cima
+- **S** ou **↓** - Mover para baixo
+- **A** ou **←** - Mover para esquerda
+- **D** ou **→** - Mover para direita
+- **ESC** - Sair do jogo
+- **Clique no X** - Fechar janela
+
+## 🔧 Requisitos e Instalação
+
+### Dependências:
+- **GCC** (compilador C)
+- **Make**
+- **MiniLibX** (já incluída no projeto)
+- **Linux/Unix** (testado em sistemas Linux)
+
+### Compilação:
+```bash
+# Compile o projeto
+make
+
+# Ou compile com regras específicas
+make all      # Compila tudo
+make clean    # Remove arquivos objeto
+make fclean   # Remove arquivos objeto e executável
+make re       # Recompila completamente
+```
+
+<br>
+
+## 🎮 Como Executar
+
+#### Execute o jogo com um mapa
+
+```bash
+./so_long maps/map.ber
+```
+
+#### Execute com valgrind para verificar memory leaks
+
+```bash
+valgrind --leak-check=full --show-leak-kinds=all ./so_long maps/map.ber
+```
+
+#### Execute com diferentes mapas
+```bash
+./so_long maps/hard.ber
+./so_long maps/big_map.ber
+```
+
+## Debug e Verificação
+
+#### Com valgrind:
+```bash
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/map.ber
+```
+
+<div align="center">
 </div>
-
-<br>
-<br>
-
-<!-- Divisor -->
 <div align="center">
   
 ---
