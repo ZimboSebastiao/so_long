@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/06 00:34:09 by zimbo             #+#    #+#             */
+/*   Updated: 2025/12/06 00:34:36 by zimbo            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -78,8 +90,6 @@ typedef struct s_flood
 	int		*collectibles;
 	int		*exit_found;
 }	t_flood;
-
-
 
 // errors
 int		ft_validate_map_rectangle(t_data *game);
