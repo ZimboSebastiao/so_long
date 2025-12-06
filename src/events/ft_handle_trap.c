@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 19:20:26 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/05 19:20:28 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/05 19:50:08 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,40 +56,32 @@ int	ft_init_traps(t_data *game)
 	return (0);
 }
 
+static void	ft_update_trap(t_data *game, char *sprite)
+{
+	int		pixel;
+	void	*new_trap;
+
+	pixel = PIXEL;
+	new_trap = mlx_xpm_file_to_image(game->mlx, sprite, &pixel, &pixel);
+	if (!new_trap)
+		return ;
+	mlx_destroy_image(game->mlx, game->img.trap);
+	game->img.trap = new_trap;
+	ft_render(game);
+}
+
 int	ft_trap_anim(t_data *game)
 {
 	static int	x;
-	int			pixel;
-	void		*new_trap;
 
-	pixel = PIXEL;
-	if (x <= 20000)
+	if (x == 10000)
+		ft_update_trap(game, "./sprites/enime_1.xpm");
+	else if (x == 20000)
 	{
-		if (x == 10000)
-		{
-			new_trap = mlx_xpm_file_to_image(game->mlx,
-					"./sprites/enime_1.xpm", &pixel, &pixel);
-			if (new_trap)
-			{
-				mlx_destroy_image(game->mlx, game->img.trap);
-				game->img.trap = new_trap;
-				ft_render(game);
-			}
-		}
-		else if (x == 20000)
-		{
-			new_trap = mlx_xpm_file_to_image(game->mlx,
-					"./sprites/enime_0.xpm", &pixel, &pixel);
-			if (new_trap)
-			{
-				mlx_destroy_image(game->mlx, game->img.trap);
-				game->img.trap = new_trap;
-				ft_render(game);
-			}
-			x = 0;
-		}
-		x++;
+		ft_update_trap(game, "./sprites/enime_0.xpm");
+		x = 0;
 	}
+	x++;
 	ft_move_trap(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zimbo <zimbo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/05 19:20:04 by zimbo             #+#    #+#             */
-/*   Updated: 2025/12/05 19:20:06 by zimbo            ###   ########.fr       */
+/*   Updated: 2025/12/05 20:01:35 by zimbo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,7 @@ void	ft_change_player_c(t_data *game, int pixel, char dir)
 	char	*path_0;
 	char	*path_1;
 
-	if (dir == 'r')
-	{
-		path_0 = "./sprites/swim_right_0.xpm";
-		path_1 = "./sprites/swim_right_1.xpm";
-	}
-	else
-	{
-		path_0 = "./sprites/swim_left_0.xpm";
-		path_1 = "./sprites/swim_left_1.xpm";
-	}
+	ft_get_player_paths(dir, &path_0, &path_1);
 	new_player_0 = mlx_xpm_file_to_image(game->mlx, path_0, &pixel, &pixel);
 	new_player_1 = mlx_xpm_file_to_image(game->mlx, path_1, &pixel, &pixel);
 	if (!new_player_0 || !new_player_1)
@@ -87,8 +78,8 @@ void	ft_create_images(t_data *game)
 			"./sprites/exit_close.xpm", &pixel, &pixel);
 	game->img.exit_open_img = mlx_xpm_file_to_image(game->mlx,
 			"./sprites/exit.xpm", &pixel, &pixel);
-	if (!game->img.floor || !game->img.wall || !game->img.collectible ||
-		!game->img.trap || !game->img.exit || !game->img.exit_open_img)
+	if (!game->img.floor || !game->img.wall || !game->img.collectible
+		|| !game->img.trap || !game->img.exit || !game->img.exit_open_img)
 	{
 		ft_putstr_fd("Error\nFailed to load game images\n", 2);
 		ft_exit_game(game, EXIT_FAILURE);

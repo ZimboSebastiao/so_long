@@ -14,10 +14,13 @@ SRCS =	main.c \
 		src/events/ft_game_manager.c \
 		src/events/get_next_line.c \
 		src/render/ft_render_map.c \
+		src/render/ft_draw_map.c \
 		src/utils/ft_player_controller.c \
 		src/utils/ft_trap_moves.c \
+		src/utils/ft_player_utils.c \
 		src/utils/get_next_line_utils.c \
 		src/validator/ft_check_error.c \
+		src/validator/ft_errors.c \
 		src/validator/ft_check_map.c \
 
 OBJ = $(SRCS:.c=.o)

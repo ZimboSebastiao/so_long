@@ -71,12 +71,24 @@ typedef struct s_data
 	int			game_over;
 }	t_data;
 
+typedef struct s_flood
+{
+	char	**map;
+	t_point	size;
+	int		*collectibles;
+	int		*exit_found;
+}	t_flood;
+
+
+
 // errors
 int		ft_validate_map_rectangle(t_data *game);
 int		ft_validate_walls(t_data *game);
 int		ft_check_error(t_data *game, char *file);
 int		ft_check_requirements(t_data *game);
 int		ft_check_extention(const char *file);
+int		ft_error(char *msg, t_data *game);
+char	**duplicate_map(t_data *game);
 
 // layout inicialization
 int		ft_init_positions(t_data *game);
@@ -87,6 +99,8 @@ void	ft_free_map(t_data *game);
 void	ft_free_matrix(char **matrix);
 
 // player
+void	ft_handle_move(t_data *game, int new_y, int new_x);
+int		ft_can_move(t_data *game, int new_y, int new_x);
 void	ft_move_up(t_data *game);
 void	ft_move_down(t_data *game);
 void	ft_move_right(t_data *game);
@@ -111,9 +125,11 @@ void	ft_draw_map(t_data *game, int x, int y);
 void	ft_open_exit(t_data *game);
 void	ft_change_player_c(t_data *game, int pixel, char dir);
 void	ft_change_player(t_data *game, int pixel, char dir);
+void	ft_draw_tile(t_data *game, int x, int y);
 void	ft_create_images(t_data *game);
 void	ft_clear_images(t_data *game);
 void	ft_destroy_all_images(t_data *game);
+void	ft_draw_player(t_data *game, int x, int y);
 
 // events
 int		ft_press_x(t_data *game);
@@ -121,5 +137,6 @@ int		ft_key_press(int key, t_data *game);
 void	ft_game_over(t_data *game);
 void	ft_check_winner(t_data *game);
 void	ft_exit_game(t_data *game, int exit_code);
+void	ft_get_player_paths(char dir, char **p0, char **p1);
 
 #endif
