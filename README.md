@@ -28,13 +28,10 @@ So Long é um projeto da 42 São Paulo que consiste em desenvolver um jogo 2D us
 
 ## 🎥 Demonstração
 
-📹 **Vídeo de Demonstração**: [demo](./video/demo.webm)
-
-*Demonstração do jogo funcionando com todas as mecânicas*
+📹 **Vídeo de Demonstração**: 
+![Demonstração do jogo](./video/demo.gif)
 
 <br>
-
-
 
 ## 🚀 Funcionalidades
 
